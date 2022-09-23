@@ -18,7 +18,7 @@ func main()  {
 
 	// Ejercicio 2
 	fmt.Println("La temperatura de hoy es: ", temperatura)
-	fmt.Println("La humedad es de: ", humedad)
+	fmt.Println("La humedad es de: ", humedad)		
 	fmt.Println("La presion es de: ", presion)
 
 	//2- Declararia estas variables como float64
@@ -27,7 +27,7 @@ func main()  {
 	// Ejercicio 3
 	// 1- El nombre de la variable no puede arrancar con un numero
 	// 2- Esta declaracion es valida
-	// 3- Esta declaracion es valida
+	// 3- El tipo de dato esta no puede declararse previo al nombre de la variable
 	// 4- El nombre de la variable no puede arrancar con un numero
 	// 5- Esta declaracion es valida
 	// 6- El nombre de la variable no puede contener espacios
