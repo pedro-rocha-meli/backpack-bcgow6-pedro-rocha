@@ -8,7 +8,7 @@ func main() {
 	//Ejercicio 1
 	palabra := "Manzana"
 
-	fmt.Println(len(palabra),"\n")
+	fmt.Println(len(palabra), "\n")
 
 	characters := strings.Split(palabra, "")
 
@@ -30,7 +30,7 @@ func main() {
 			fmt.Println("Prestamo entregado con tasa de interes.")
 		}
 	default:
-		fmt.Println("El cliente no cumple los requisitos para acceder al prestamo.")	
+		fmt.Println("El cliente no cumple los requisitos para acceder al prestamo.")
 	}
 
 	//Ejercicio 3
@@ -64,23 +64,22 @@ func main() {
 		fmt.Println("Diciembre")
 	}
 
-	
 	//Ejercicio 4
 	var employees = map[string]int{"Benjamin": 20, "Nahuel": 26, "Brenda": 19, "Darío": 44, "Pedro": 30}
-	
+
 	fmt.Println(employees["Benjamin"])
 
 	mayoresA21 := 0
 
 	for _, element := range employees {
-        if element > 21 {
+		if element > 21 {
 			mayoresA21++
 		}
-    }
+	}
 
 	fmt.Println(mayoresA21)
 
 	employees["Jacinta"] = 18
-	
+
 	delete(employees, "Pedro")
 }
