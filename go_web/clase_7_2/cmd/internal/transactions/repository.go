@@ -148,14 +148,6 @@ func (r *repository) UpdateCode(id int, code string) (Transaction, error) {
 	return t, nil
 }
 
-// func (r *repository) NewID() (int, error){
-// 	return Increment(&ID), nil
-// }
-
-// func Increment(id *int) int{
-// 	return *id + 1
-// }
-
 func (r *repository) LastID() (int, error) {
 
 	var transactions []Transaction
