@@ -76,6 +76,7 @@ func (s *MockStore) Read(data interface{}) (err error) {
 	return
 }
 func (s *MockStore) Write(data interface{}) (err error) {
+	s.writeWasCalled = true
 	castedData := data.([]Transaction)
 	s.data = append(s.data, castedData...)
 	return
@@ -147,6 +148,32 @@ func TestStore(t *testing.T) {
 	)
 
 	assert.Nil(t, err)
+	assert.True(t, db.writeWasCalled)
 	assert.Equal(t, out, newTransaction)
 	assert.Equal(t, newTransaction, db.data[0])
+}
+
+func TestLastID(t *testing.T){
+
+	data := []Transaction{
+		{
+			Id:       5,
+			Code:     "Before Update",
+			Currency: "ETH",
+			Amount:   0.05432,
+			Sender:   "newTrader",
+			Date:     "12-03-2022",
+		},
+	}
+
+	db := &MockStore{data: data, readWasCalled: false, writeWasCalled: false}
+
+	expected := 5
+
+	repo := NewRepository(db)
+
+	out, err := repo.LastID()
+
+	assert.Nil(t, err)
+	assert.Equal(t, expected, out)
 }

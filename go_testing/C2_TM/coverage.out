@@ -38,9 +38,9 @@ github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/int
 github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:153.31,157.4 3 1
 github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:160.14,162.3 1 0
 github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:164.49,166.3 1 0
-github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:171.44,174.49 2 0
-github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:177.2,177.28 1 0
-github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:181.2,181.50 1 0
+github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:171.44,174.49 2 1
+github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:177.2,177.28 1 1
+github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:181.2,181.50 1 1
 github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:174.49,176.3 1 0
 github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/repository.go:177.28,179.3 1 0
 github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/internal/transactions/service.go:15.39,19.2 1 1
