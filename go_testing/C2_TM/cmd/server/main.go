@@ -26,7 +26,6 @@ func main() {
 	repository := transactions.NewRepository(db)
 	service := transactions.NewService(repository)
 	handler := handler.NewHandler(service)
-
 	router := gin.Default()
 
 	docs.SwaggerInfo.Host = os.Getenv("HOST")
