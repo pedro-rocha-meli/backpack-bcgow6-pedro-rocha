@@ -2,13 +2,14 @@ package transactions
 
 import (
 	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
 
 /*
 Ejercicio 1 - Test Unitario GetAll()
-Generar un Stub del Store cuya función “Read” retorne dos productos con las especificaciones que deseen. 
-Comprobar que GetAll() retorne la información exactamente igual a la esperada. 
+Generar un Stub del Store cuya función “Read” retorne dos productos con las especificaciones que deseen.
+Comprobar que GetAll() retorne la información exactamente igual a la esperada.
 Para esto:
     1. Dentro de la carpeta /internal/products, crear un archivo repository_test.go con el test diseñado.
 */
@@ -27,7 +28,6 @@ func (s *StubStore) Write(data interface{}) (err error) {
 	s.data = append(s.data, castedData...)
 	return
 }
-
 
 func TestGetAll(t *testing.T) {
 
@@ -63,9 +63,10 @@ Diseñar Test de UpdateName, donde se valide que la respuesta retornada sea corr
     3. Para dar el test como OK debe validarse que al invocar el método del Repository UpdateName, con el id del producto mockeado y con el nuevo nombre “After Update”, efectivamente haga la actualización. También debe validarse que el método Read haya sido ejecutado durante el test.
 */
 
-type MockStore struct{
-	data []Transaction
-	readWasCalled bool
+type MockStore struct {
+	data           []Transaction
+	readWasCalled  bool
+	writeWasCalled bool
 }
 
 func (s *MockStore) Read(data interface{}) (err error) {
@@ -97,7 +98,7 @@ func TestUpdateName(t *testing.T) {
 	updatedCode := "Updated Name"
 
 	expected.Code = updatedCode
-	
+
 	db := &MockStore{data: data, readWasCalled: false}
 
 	repo := NewRepository(db)
@@ -107,4 +108,45 @@ func TestUpdateName(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, expected, out)
 	assert.True(t, db.readWasCalled)
+}
+
+/*
+C3 TM - Ejercicio 3
+
+Para mejorar la calidad del código se debe aumentar el coverage del proyecto Go - Web, seguir los siguientes pasos:
+
+Después de identificar las partes del código que no tienen cobertura, se debe elegir una o más partes del código donde sea razonable aumentar la cobertura.
+Aumentar la cobertura de las partes elegidas.
+Comparar el code coverage y el coverage report actual contra el anterior.
+*/
+
+func TestStore(t *testing.T) {
+
+	data := []Transaction{}
+
+	newTransaction := Transaction{
+		Id:       1,
+		Code:     "ABX-832",
+		Currency: "SOL",
+		Amount:   21.453,
+		Sender:   "newTrader",
+		Date:     "15-03-2022",
+	}
+
+	db := &MockStore{data: data, readWasCalled: false, writeWasCalled: false}
+
+	repo := NewRepository(db)
+
+	out, err := repo.Store(
+		newTransaction.Id,
+		newTransaction.Code,
+		newTransaction.Currency,
+		newTransaction.Amount,
+		newTransaction.Sender,
+		newTransaction.Date,
+	)
+
+	assert.Nil(t, err)
+	assert.Equal(t, out, newTransaction)
+	assert.Equal(t, newTransaction, db.data[0])
 }
