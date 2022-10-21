@@ -40,5 +40,8 @@ func main() {
 		transactionRoutes.PATCH("/:id", handler.UpdateCode())
 	}
 
-	router.Run()
+	err := router.Run()
+	if err != nil {
+		panic(err)
+	}
 }

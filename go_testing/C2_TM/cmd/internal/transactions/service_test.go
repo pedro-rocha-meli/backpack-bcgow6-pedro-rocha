@@ -18,8 +18,6 @@ type MockStorage struct {
 	data       []Transaction
 	readWasCalled  bool
 	writeWasCalled bool
-	errWrite       string
-	errRead        string
 }
 
 func (m *MockStorage) Read(data interface{}) error {

@@ -17,12 +17,12 @@ type StubStore struct {
 	data []Transaction
 }
 
-func (s StubStore) Read(data interface{}) (err error) {
+func (s *StubStore) Read(data interface{}) (err error) {
 	castedData := data.(*[]Transaction)
 	*castedData = s.data
 	return
 }
-func (s StubStore) Write(data interface{}) (err error) {
+func (s *StubStore) Write(data interface{}) (err error) {
 	castedData := data.([]Transaction)
 	s.data = append(s.data, castedData...)
 	return
@@ -45,7 +45,7 @@ func TestGetAll(t *testing.T) {
 
 	//Act.
 	myStub := StubStore{data: expectedTransactions}
-	repo := NewRepository(myStub)
+	repo := NewRepository(&myStub)
 
 	result, err := repo.GetAll()
 

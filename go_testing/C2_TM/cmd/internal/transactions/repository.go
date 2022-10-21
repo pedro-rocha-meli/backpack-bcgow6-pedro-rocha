@@ -1,6 +1,7 @@
 package transactions
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/pedro-rocha-meli/backpack-bcgow6-pedro-rocha/go_testing/C2_TM/cmd/pkg/store"
@@ -38,14 +39,21 @@ func NewRepository(db store.Store) Repository {
 
 func (r *repository) GetAll() ([]Transaction, error) {
 	var transactions []Transaction
-	r.db.Read(&transactions)
+	err := r.db.Read(&transactions)
+	if err != nil {
+		return []Transaction{}, errors.New("an error ocurred while trying to fetch")
+	}
 	return transactions, nil
 }
 
 func (r *repository) Store(id int, code string, currency string, amount float64, sender string, date string) (Transaction, error) {
 
 	var transactions []Transaction
-	r.db.Read(&transactions)
+	err := r.db.Read(&transactions)
+
+	if err != nil {
+		return Transaction{}, errors.New("an error ocurred while trying to read")
+	}
 
 	t := Transaction{
 		Id:       id,
@@ -66,7 +74,12 @@ func (r *repository) Store(id int, code string, currency string, amount float64,
 func (r *repository) Update(id int, code string, currency string, amount float64, sender string, date string) (Transaction, error) {
 
 	var transactions []Transaction
-	r.db.Read(&transactions)
+	err := r.db.Read(&transactions)
+
+	if err != nil {
+		return Transaction{}, errors.New("an error occurred while trying to update")
+	}
+
 	updated := false
 
 	t := Transaction{
@@ -100,7 +113,10 @@ func (r *repository) Update(id int, code string, currency string, amount float64
 func (r *repository) Delete(id int) error {
 
 	var transactions []Transaction
-	r.db.Read(&transactions)
+	err := r.db.Read(&transactions)
+	if err != nil {
+		return errors.New("an error occurred while trying to delete")
+	}
 	updated := false
 
 	for i := range transactions {
@@ -124,7 +140,11 @@ func (r *repository) Delete(id int) error {
 func (r *repository) UpdateCode(id int, code string) (Transaction, error) {
 
 	var transactions []Transaction
-	r.db.Read(&transactions)
+	err := r.db.Read(&transactions)
+
+	if err != nil {
+		return Transaction{}, errors.New("an error occurred while trying to update")
+	}
 
 	var t Transaction
 	updated := false
