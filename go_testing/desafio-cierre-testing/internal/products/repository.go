@@ -1,7 +1,9 @@
 package products
 
+import "example.com/internal/domain"
+
 type Repository interface {
-	GetAllBySeller(sellerID string) ([]Product, error)
+	GetAllBySeller(sellerID string) ([]domain.Product, error)
 }
 
 type repository struct{}
@@ -10,9 +12,9 @@ func NewRepository() Repository {
 	return &repository{}
 }
 
-func (r *repository) GetAllBySeller(sellerID string) ([]Product, error) {
-	var prodList []Product
-	prodList = append(prodList, Product{
+func (r *repository) GetAllBySeller(sellerID string) ([]domain.Product, error) {
+	var prodList []domain.Product
+	prodList = append(prodList, domain.Product{
 		ID:          "mock",
 		SellerID:    "FEX112AC",
 		Description: "generic product",

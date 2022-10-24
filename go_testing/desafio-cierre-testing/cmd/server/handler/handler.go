@@ -1,14 +1,15 @@
-package products
+package handler
 
 import (
+	"example.com/internal/products"
 	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
-	svc Service
+	svc products.Service
 }
 
-func NewHandler(s Service) *Handler {
+func NewHandler(s products.Service) *Handler {
 	return &Handler{
 		svc: s,
 	}

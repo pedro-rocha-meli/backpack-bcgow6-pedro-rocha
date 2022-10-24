@@ -4,32 +4,16 @@ import (
 	"errors"
 	"testing"
 
+	"example.com/internal/domain"
+	"example.com/test/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
-type mockRepository struct {
-	data []Product
-}
 
-func (r *mockRepository) GetAllBySeller(sellerID string) ([]Product, error) {
-	var prodList []Product
-
-	for _, v := range r.data {
-		if sellerID == v.SellerID {
-			prodList = append(prodList, v)
-		}
-	}
-
-	if len(prodList) == 0 {
-		return []Product{}, errors.New("not found")
-	}
-
-	return prodList, nil
-}
 
 func TestGetAllBySeller(t *testing.T) {
 
-	expected := []Product{
+	expected := []domain.Product{
 		{
 			ID:          "mock",
 			SellerID:    "FEX112AC",
@@ -38,8 +22,8 @@ func TestGetAllBySeller(t *testing.T) {
 		},
 	}
 
-	repo := mockRepository{
-		data: []Product{
+	repo := mocks.MockRepository{
+		Data: []domain.Product{
 			{
 				ID:          "mock",
 				SellerID:    "FEX112AC",
@@ -61,8 +45,8 @@ func TestGetAllBySellerWithError(t *testing.T){
 
 	expected := errors.New("not found")
 
-	repo := mockRepository{
-		data: []Product{},
+	repo := mocks.MockRepository{
+		Data: []domain.Product{},
 	}
 
 	service := NewService(&repo)
