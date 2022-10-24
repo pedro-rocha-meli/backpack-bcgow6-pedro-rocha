@@ -82,7 +82,7 @@ func (s *MockStore) Write(data interface{}) (err error) {
 	return
 }
 
-func TestUpdateName(t *testing.T) {
+func TestUpdateCode(t *testing.T) {
 	data := []Transaction{
 		{
 			Id:       1,
