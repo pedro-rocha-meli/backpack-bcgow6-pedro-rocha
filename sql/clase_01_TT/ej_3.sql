@@ -1,9 +1,9 @@
-/* Create DataBase */
+
 DROP DATABASE IF EXISTS empresa_internet;
 CREATE DATABASE empresa_internet;
 USE empresa_internet;
 
-/* Create Tables */
+
 CREATE TABLE cliente (
 	dni INT NOT NULL,
 	nombre VARCHAR(50),
