@@ -1,0 +1,10 @@
+a. El DNI en la tabla de clientes seria la clave primaria ya que permite identificar a cada cliente con un numero unico. 
+Yo creo que esta solucion no es la mejor ya que han ocurrido casos donde el DNI se encuentra repetido en 2 o mas usuarios. 
+Para esto yo plantearia agregar una columna de ID auto incremental.
+
+b. La identificacion del plan seria la clave primaria ya que permite identificar a cada plan con un identificador unico 
+e irrepetible.
+
+c. Cada cliente puede tener un plan y un plan puede tener muchos clientes. En la tabla clientes deberia de haber una 
+clave foranea haciendo referencia a la identificacion de plan 
+
